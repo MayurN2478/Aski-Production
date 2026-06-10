@@ -10,13 +10,13 @@ export default function Navbar() {
 
   const navItems = [
     { label: "Home", id: "hero" },
-    { label: "About", id: "about" },
+    { label: "Founder", id: "founder" },
+    { label: "Team", id: "team" },
     { label: "Services", id: "services" },
     { label: "Portfolio", id: "portfolio" },
-    { label: "Approach", id: "approach" },
     { label: "Testimonials", id: "testimonials" },
     { label: "Book a Shoot", id: "booking", isCTA: true },
-  ];
+    ];
 
   useEffect(() => {
     const handleScroll = () => {
