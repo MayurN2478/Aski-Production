@@ -29,8 +29,7 @@ export default function Team() {
   return (
     <section
       id="team"
-      className="py-24 md:py-32 bg-black relative border-b border-white/5"
-    >
+      className=" py-24 md:py-32 bg-white dark:bg-[#050505] relative border-b border-black/5 dark:border-white/5 transition-colors duration-300 ">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         
         {/* Title */}
@@ -38,10 +37,10 @@ export default function Team() {
           <span className="text-gold uppercase tracking-[0.4em] text-[10px] md:text-xs font-semibold block">
             The Storytellers
           </span>
-          <h2 className="text-4xl md:text-5xl font-serif font-light text-white leading-tight">
+          <h2 className=" text-4xl md:text-5xl font-serif font-light text-black dark:text-white leading-tight transition-colors duration-300 ">
             Meet The Artists Behind Every Frame <br />
           </h2>
-          <p className="text-gray-400 text-sm md:text-base font-light max-w-xl mx-auto">
+          <p className=" text-gray-600 dark:text-gray-400 text-sm md:text-base font-light max-w-xl mx-auto transition-colors duration-300 ">
             Every frame we create is the result of passionate storytellers, cinematic thinkers, and visual artists working together to preserve your most meaningful moments.
           </p>
         </div>
@@ -85,9 +84,10 @@ export default function Team() {
               </div>
 
               {/* Content */}
-              <div className="space-y-3">
+              <div
+                className="space-y-3 p-5 rounded-xl bg-gray-50 dark:bg-transparent transition-colors duration-300">
 
-                <h3 className="text-2xl font-serif text-white">
+                <h3 className=" text-2xl font-serif text-black dark:text-white transition-colors duration-300 ">
                   {member.name}
                 </h3>
 
@@ -95,7 +95,7 @@ export default function Team() {
                   {member.role}
                 </p>
 
-                <p className="text-gray-400 text-sm leading-relaxed line-clamp-3">
+                <p className=" text-gray-600 dark:text-gray-400 text-sm leading-relaxed line-clamp-3 transition-colors duration-300 ">
                   {member.bio}
                 </p>
 

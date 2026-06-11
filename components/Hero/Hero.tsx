@@ -52,7 +52,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.4 }}
-          className="text-5xl md:text-8xl lg:text-9xl font-serif font-light text-white tracking-wide leading-none select-none"
+          className="text-5xl md:text-8xl lg:text-9xl font-serif font-light text-white dark:text-white tracking-wide leading-none select-none"
         >
           ASKI <span className="font-serif italic font-normal text-gold">FILMS</span>
         </motion.h1>
@@ -61,7 +61,7 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.5, delay: 0.7 }}
-          className="mt-8 max-w-2xl text-gray-300 text-sm md:text-base lg:text-lg font-light tracking-wide leading-relaxed"
+          className="mt-8 max-w-2xl text-gray-200 dark:text-gray-300 text-sm md:text-base lg:text-lg font-light tracking-wide leading-relaxed"
         >
           Preserving raw emotions, candid glances, and crafting timeless visual stories
           through a dedicated production-grade photography team.

@@ -61,7 +61,7 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="py-24 md:py-36 bg-charcoal border-y border-white/5 relative overflow-hidden"
+      className=" py-24 md:py-36 bg-white dark:bg-charcoal border-y border-black/5 dark:border-white/5 relative overflow-hidden transition-colors duration-300 "
     >
       {/* Background design elements */}
       <div className="absolute top-1/4 right-0 w-96 h-96 bg-gold/5 rounded-full blur-[150px] -z-10" />
@@ -74,10 +74,10 @@ export default function Services() {
           <span className="text-gold uppercase tracking-[0.3em] text-[10px] md:text-xs font-semibold block animate-pulse">
             Services & Wings
           </span>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-light text-white leading-tight">
+          <h2 className=" text-4xl md:text-5xl lg:text-6xl font-serif font-light text-black dark:text-white leading-tight transition-colors duration-300 ">
             Our Photography <span className="font-serif italic text-gold font-normal">Specialities</span>
           </h2>
-          <p className="text-gray-400 text-sm md:text-base font-light max-w-xl mx-auto">
+          <p className=" text-gray-600 dark:text-gray-400 text-sm md:text-base font-light max-w-xl mx-auto transition-colors duration-300 ">
             From the grandest celebration to the quietest milestone, we document your life with a signature cinematic style.
           </p>
         </div>
@@ -91,7 +91,7 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="group relative flex flex-col justify-between h-[450px] overflow-hidden rounded-sm border border-white/5 bg-black/40 hover:border-gold/30 transition-all duration-500 shadow-xl"
+              className=" group relative flex flex-col h-full overflow-hidden rounded-sm border border-black/5 dark:border-white/5 bg-gray-50 dark:bg-black/40 hover:border-gold/30 transition-all duration-500 shadow-xl"
             >
               {/* Background Image */}
               <div className="absolute inset-0 w-full h-full -z-10 overflow-hidden">
@@ -114,20 +114,20 @@ export default function Services() {
                   <div className="w-8 h-[1px] bg-gold/30 group-hover:w-16 transition-all duration-500 mt-5" />
                 </div>
                 
-                <h3 className="text-xl md:text-2xl font-serif text-white mb-4 group-hover:text-gold transition-colors duration-300">
+                <h3 className=" text-xl md:text-2xl font-serif text-black dark:text-white mb-4 group-hover:text-gold transition-colors duration-300 ">
                   {service.title}
                 </h3>
-                
-                <p className="text-gray-400 text-xs md:text-sm font-light leading-relaxed mb-6 group-hover:text-gray-300 transition-colors duration-300">
+              
+                <p className=" text-gray-600 dark:text-gray-400 text-xs md:text-sm font-light leading-relaxed mb-6 group-hover:text-gray-800 dark:group-hover:text-gray-300 transition-colors duration-300 ">
                   {service.description}
                 </p>
               </div>
 
               {/* Card Bottom / Features List */}
               <div className="p-8 pt-0 mt-auto">
-                <ul className="space-y-2 mb-6 border-t border-white/5 pt-4 text-left">
+                <ul className=" space-y-2 mb-6 border-t border-black/5 dark:border-white/5 pt-4 text-left transition-colors duration-300 ">
                   {service.features.map((feat) => (
-                    <li key={feat} className="flex items-center gap-2 text-[10px] md:text-xs text-gray-400 font-light">
+                    <li key={feat} className=" flex items-center gap-2 text-[10px] md:text-xs text-gray-600 dark:text-gray-400 font-light transition-colors duration-300 ">
                       <span className="w-1 h-1 rounded-full bg-gold" />
                       {feat}
                     </li>
@@ -136,7 +136,7 @@ export default function Services() {
 
                 <button
                   onClick={handleScrollToBooking}
-                  className="w-full py-2.5 border border-white/10 hover:border-gold group-hover:bg-gold hover:text-black rounded-sm text-xs font-semibold uppercase tracking-wider text-gray-300 hover:text-black transition-all duration-500 cursor-pointer"
+                  className=" w-full py-2.5 border border-black/10 dark:border-white/10 hover:border-gold group-hover:bg-gold hover:text-black rounded-sm text-xs font-semibold uppercase tracking-wider text-gray-700 dark:text-gray-300 transition-all duration-500 cursor-pointer "
                 >
                   Book photoshoot
                 </button>

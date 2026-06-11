@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
+import ThemeProvider from "@/components/ThemeProvider";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-serif",
@@ -30,8 +32,24 @@ export default function RootLayout({
       lang="en"
       className={`${cormorant.variable} ${plusJakarta.variable} h-full antialiased`}
     >
-      <body className="min-h-full bg-black text-white flex flex-col font-sans">
-        {children}
+      <body
+        className="
+          min-h-full
+          flex
+          flex-col
+          font-sans
+          bg-white
+          text-black
+          dark:bg-black
+          dark:text-white
+          transition-colors
+          duration-300
+        "
+      >
+        <ThemeProvider>
+          {children}
+          <ThemeToggle />
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -147,7 +147,7 @@ export default function Portfolio() {
   return (
     <section
       id="portfolio"
-      className="py-24 md:py-36 bg-black relative"
+      className=" py-24 md:py-36 bg-white dark:bg-[#050505] relative border-b border-black/5 dark:border-white/5 transition-colors duration-300 "
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         
@@ -157,13 +157,13 @@ export default function Portfolio() {
             <span className="text-gold uppercase tracking-[0.3em] text-[10px] md:text-xs font-semibold block">
               Portfolio
             </span>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-light text-white leading-tight">
+            <h2 className=" text-4xl md:text-5xl lg:text-6xl font-serif font-light text-black dark:text-white leading-tight transition-colors duration-300 ">
               Selected <span className="font-serif italic text-gold font-normal">Captures</span>
             </h2>
           </div>
 
           {/* Filtering Tabs */}
-          <div className="flex flex-wrap gap-2 border-b border-white/5 pb-2 md:pb-0">
+          <div className=" flex flex-wrap gap-2 border-b border-black/5 dark:border-white/5 pb-2 md:pb-0 transition-colors duration-300 ">
             {categories.map((cat) => (
               <button
                 key={cat}
@@ -171,7 +171,7 @@ export default function Portfolio() {
                 className={`px-4 py-2 text-xs uppercase tracking-widest transition-all duration-300 rounded-sm cursor-pointer ${
                   activeTab === cat
                     ? "bg-gold text-black font-semibold"
-                    : "text-gray-400 hover:text-white hover:bg-white/5"
+                    : "text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/5"
                 }`}
               >
                 {cat}
@@ -195,7 +195,7 @@ export default function Portfolio() {
                 transition={{ duration: 0.5 }}
                 key={item.id}
                 onClick={() => openLightbox(item.id)}
-                className="group relative aspect-[3/4] overflow-hidden rounded-sm cursor-pointer shadow-lg border border-white/5"
+                className=" group relative aspect-[3/4] overflow-hidden rounded-sm cursor-pointer shadow-md hover:shadow-xl border border-black/5 dark:border-white/5 transition-all duration-300 "
               >
                 {/* Photo */}
                 <Image
@@ -221,7 +221,7 @@ export default function Portfolio() {
                   <h3 className="text-xl font-serif text-white font-light tracking-wide leading-tight">
                     {item.title}
                   </h3>
-                  <div className="flex items-center gap-1.5 mt-2 text-gray-400">
+                  <div className=" flex items-center gap-1.5 mt-2 text-gray-300 ">
                     <svg
                       className="w-3.5 h-3.5 text-gold"
                       fill="none"

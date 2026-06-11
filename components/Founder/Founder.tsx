@@ -7,7 +7,19 @@ export default function Founder() {
   return (
     <section
       id="founder"
-      className="relative py-24 md:py-36 bg-[#050505] overflow-hidden border-b border-white/5"
+      className="
+        relative
+        py-24
+        md:py-36
+        bg-white
+        dark:bg-[#050505]
+        overflow-hidden
+        border-b
+        border-black/10
+        dark:border-white/30
+        transition-colors
+        duration-300
+        "
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
@@ -48,7 +60,7 @@ export default function Founder() {
               Meet The Founder
             </span>
 
-            <h2 className="mt-4 text-4xl md:text-5xl lg:text-6xl font-serif font-light text-white">
+            <h2 className=" mt-4 text-4xl md:text-5xl lg:text-6xl font-serif font-light text-black dark:text-white transition-colors duration-300 ">
               Hi, I'm Mayur
             </h2>
 
@@ -56,9 +68,9 @@ export default function Founder() {
               Founder & Creative Director
             </p>
 
-            <div className="mt-8 space-y-6 text-gray-300 leading-relaxed font-light">
+            <div className=" mt-8 space-y-6 text-gray-700 dark:text-gray-300 leading-relaxed font-light transition-colors duration-300 ">
 
-              <p className="text-white text-lg">
+              <p className="text-black dark:text-white text-lg transition-colors duration-300">
                 Photography is not just about creating beautiful images.
                 It is about preserving emotions, relationships, and memories
                 that become more valuable with time.
@@ -85,7 +97,7 @@ export default function Founder() {
                 "Every frame should make you feel something."
               </p>
 
-              <p className="mt-2 text-gray-500 uppercase tracking-[0.3em] text-[10px]">
+              <p className="mt-2 text-gray-600 dark:text-gray-500 uppercase tracking-[0.3em] text-[10px] transition-colors duration-300">
                 — Mayur
               </p>
 

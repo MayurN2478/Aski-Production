@@ -130,7 +130,7 @@ export default function Contact() {
   return (
     <section
       id="booking"
-      className="py-24 md:py-36 bg-charcoal relative border-b border-white/5"
+      className=" py-24 md:py-36 bg-white dark:bg-[#050505] relative border-b border-black/5 dark:border-white/5 transition-colors duration-300 "
     >
       <div className="max-w-4xl mx-auto px-6 lg:px-8">
         
@@ -140,13 +140,13 @@ export default function Contact() {
             <span className="text-gold uppercase tracking-[0.3em] text-[10px] md:text-xs font-semibold block mb-4">
               Booking Wizard
             </span>
-            <h2 className="text-3xl md:text-4xl font-serif text-white font-light">
+            <h2 className="text-3xl md:text-4xl font-serif text-black dark:text-white font-light transition-colors duration-300">
               Plan Your <span className="font-serif italic text-gold">Photoshoot</span>
             </h2>
             
             {/* ProgressBar */}
             <div className="mt-8 flex items-center justify-between max-w-md mx-auto relative">
-              <div className="absolute left-0 right-0 top-1/2 h-[2px] bg-white/10 -translate-y-1/2 -z-10" />
+              <div className="absolute left-0 right-0 top-1/2 h-[2px] bg-black/10 dark:bg-white/10 -translate-y-1/2 -z-10" />
               <div
                 className="absolute left-0 top-1/2 h-[2px] bg-gold -translate-y-1/2 -z-10 transition-all duration-500"
                 style={{ width: `${((step - 1) / 4) * 100}%` }}
@@ -161,7 +161,7 @@ export default function Contact() {
                       ? "bg-gold text-black font-semibold shadow-lg shadow-gold/20 scale-110"
                       : s < step
                       ? "bg-gold/80 text-black font-semibold"
-                      : "bg-[#161616] text-gray-500 border border-white/5"
+                      : "bg-gray-100 dark:bg-[#161616] text-gray-500 border border-black/5 dark:border-white/5"
                   }`}
                 >
                   {s}
@@ -171,7 +171,7 @@ export default function Contact() {
           </div>
         )}
 
-        <div className="glass-panel p-8 md:p-12 rounded-sm shadow-2xl relative overflow-hidden">
+        <div className=" glass-panel p-8 md:p-12 rounded-sm shadow-2xl relative overflow-hidden bg-white/90 dark:bg-[#121212]/60 border border-black/5 dark:border-white/5 transition-colors duration-300 ">
           <form onSubmit={handleSubmit}>
             <AnimatePresence mode="wait">
               
@@ -184,7 +184,7 @@ export default function Contact() {
                   exit={{ opacity: 0, x: -20 }}
                   className="space-y-6"
                 >
-                  <h3 className="text-xl md:text-2xl font-serif text-white text-left mb-6 font-light">
+                  <h3 className="text-xl md:text-2xl font-serif text-black dark:text-white transition-colors duration-300 text-left mb-6 font-light">
                     What are we celebrating?
                   </h3>
                   <div className="space-y-3">
@@ -195,13 +195,13 @@ export default function Contact() {
                         className={`p-5 rounded-sm border cursor-pointer transition-all duration-300 text-left ${
                           formData.occasion === o.val
                             ? "border-gold bg-gold/10"
-                            : "border-white/5 bg-black/20 hover:border-white/20 hover:bg-black/45"
+                            : "border-black/5 dark:border-white/5 bg-gray-50 dark:bg-black/20 hover:border-black/20 dark:hover:border-white/20 hover:bg-gray-100 dark:hover:bg-black/45"
                         }`}
                       >
-                        <h4 className="text-sm font-semibold uppercase tracking-wider text-white">
+                        <h4 className="text-sm font-semibold uppercase tracking-wider text-black dark:text-white transition-colors duration-300">
                           {o.label}
                         </h4>
-                        <p className="text-gray-400 text-xs mt-1 font-light">
+                        <p className="text-gray-600 dark:text-gray-400 text-xs mt-1 font-light">
                           {o.desc}
                         </p>
                       </div>
@@ -222,13 +222,13 @@ export default function Contact() {
                   exit={{ opacity: 0, x: -20 }}
                   className="space-y-6 text-left"
                 >
-                  <h3 className="text-xl md:text-2xl font-serif text-white mb-6 font-light">
+                  <h3 className="text-xl md:text-2xl font-serif text-black dark:text-white transition-colors duration-300 mb-6 font-light">
                     Tell us about your event
                   </h3>
                   
                   <div className="space-y-4">
                     <div>
-                      <label className="block text-gray-400 text-xs uppercase tracking-widest mb-2 font-medium">
+                      <label className="block text-gray-600 dark:text-gray-400 text-xs uppercase tracking-widest mb-2 font-medium">
                         Event Date
                       </label>
                       <input
@@ -236,13 +236,13 @@ export default function Contact() {
                         name="date"
                         value={formData.date}
                         onChange={handleTextChange}
-                        className="w-full p-4 bg-black/40 border border-white/5 focus:border-gold outline-none text-white rounded-sm text-sm"
+                        className=" w-full p-4 bg-white dark:bg-black/40 border border-black/10 dark:border-white/5 focus:border-gold outline-none text-black dark:text-white transition-colors duration-300 rounded-sm text-sm "
                       />
                       {errors.date && <p className="text-red-500 text-xs mt-1">{errors.date}</p>}
                     </div>
 
                     <div>
-                      <label className="block text-gray-400 text-xs uppercase tracking-widest mb-2 font-medium">
+                      <label className="block text-gray-600 dark:text-gray-400 text-xs uppercase tracking-widest mb-2 font-medium">
                         Venue / Location
                       </label>
                       <input
@@ -251,7 +251,7 @@ export default function Contact() {
                         value={formData.location}
                         onChange={handleTextChange}
                         placeholder="e.g. Indiranagar, Bengaluru or Leela Palace"
-                        className="w-full p-4 bg-black/40 border border-white/5 focus:border-gold outline-none text-white rounded-sm text-sm"
+                        className=" w-full p-4 bg-white dark:bg-black/40 border border-black/10 dark:border-white/5 focus:border-gold outline-none text-black dark:text-white transition-colors duration-300 rounded-sm text-sm "
                       />
                       {errors.location && (
                         <p className="text-red-500 text-xs mt-1">{errors.location}</p>
@@ -259,7 +259,7 @@ export default function Contact() {
                     </div>
 
                     <div>
-                      <label className="block text-gray-400 text-xs uppercase tracking-widest mb-2 font-medium">
+                      <label className="block text-gray-600 dark:text-gray-400 text-xs uppercase tracking-widest mb-2 font-medium">
                         Estimated Guest Count
                       </label>
                       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
@@ -270,7 +270,7 @@ export default function Contact() {
                             className={`p-3.5 text-center text-xs uppercase tracking-wider rounded-sm border cursor-pointer transition-all duration-300 font-medium ${
                               formData.guests === g
                                 ? "border-gold bg-gold text-black"
-                                : "border-white/5 bg-black/20 text-gray-300 hover:border-white/20"
+                                : "border-black/5 dark:border-white/5 bg-gray-50 dark:bg-black/20 text-black dark:text-gray-300 hover:border-black/20 dark:hover:border-white/20"
                             }`}
                           >
                             {g}
@@ -291,10 +291,10 @@ export default function Contact() {
                   exit={{ opacity: 0, x: -20 }}
                   className="space-y-6 text-left"
                 >
-                  <h3 className="text-xl md:text-2xl font-serif text-white mb-6 font-light">
+                  <h3 className="text-xl md:text-2xl font-serif text-black dark:text-white transition-colors duration-300 mb-6 font-light">
                     Select options
                   </h3>
-                  <p className="text-gray-400 text-xs -mt-4 mb-6">
+                  <p className="text-gray-600 dark:text-gray-400 text-xs -mt-4 mb-6">
                     Choose what applies to your event. Select all that interest you.
                   </p>
                   
@@ -308,21 +308,22 @@ export default function Contact() {
                           className={`p-4 rounded-sm border cursor-pointer transition-all duration-300 flex justify-between items-center ${
                             isSelected
                               ? "border-gold bg-gold/10"
-                              : "border-white/5 bg-black/20 hover:border-white/20"
+                              : "border-black/5 dark:border-white/5 bg-gray-50 dark:bg-black/20 hover:border-black/20 dark:hover:border-white/20"
                           }`}
                         >
                           <div>
-                            <h4 className="text-sm font-semibold uppercase tracking-wider text-white">
+                            <h4 className="text-sm font-semibold uppercase tracking-wider text-black dark:text-white transition-colors duration-300">
                               {opt.label}
                             </h4>
-                            <p className="text-gray-400 text-xs mt-1 font-light">
+                            <p className="text-gray-600 dark:text-gray-400 text-xs mt-1 font-light">
                               {opt.desc}
                             </p>
                           </div>
                           <div
-                            className={`w-5 h-5 rounded-sm border flex items-center justify-center transition-all ${
-                              isSelected ? "border-gold bg-gold" : "border-white/20"
-                            }`}
+                            className={`w-5 h-5 rounded-sm border flex items-center justify-center transition-all ${isSelected
+                              ? "border-gold bg-gold"
+                              : "border-black/20 dark:border-white/20"
+                              }`}
                           >
                             {isSelected && (
                               <svg
@@ -356,10 +357,10 @@ export default function Contact() {
                   exit={{ opacity: 0, x: -20 }}
                   className="space-y-6 text-left"
                 >
-                  <h3 className="text-xl md:text-2xl font-serif text-white mb-6 font-light">
+                  <h3 className="text-xl md:text-2xl font-serif text-black dark:text-white transition-colors duration-300 mb-6 font-light">
                     Choose your deliverables
                   </h3>
-                  <p className="text-gray-400 text-xs -mt-4 mb-6">
+                  <p className="text-gray-600 dark:text-gray-400 text-xs -mt-4 mb-6">
                     Select the products you would like.
                   </p>
 
@@ -373,20 +374,22 @@ export default function Contact() {
                           className={`p-4 rounded-sm border cursor-pointer transition-all duration-300 flex justify-between items-center ${
                             isSelected
                               ? "border-gold bg-gold/10"
-                              : "border-white/5 bg-black/20 hover:border-white/20"
+                              : "border-black/5 dark:border-white/5 bg-gray-50 dark:bg-black/20 hover:border-black/20 dark:hover:border-white/20"
                           }`}
                         >
                           <div>
-                            <h4 className="text-sm font-semibold uppercase tracking-wider text-white">
+                            <h4 className="text-sm font-semibold uppercase tracking-wider text-black dark:text-white transition-colors duration-300">
                               {del.label}
                             </h4>
-                            <p className="text-gray-400 text-xs mt-1 font-light">
+                            <p className="text-gray-600 dark:text-gray-400 text-xs mt-1 font-light">
                               {del.desc}
                             </p>
                           </div>
                           <div
                             className={`w-5 h-5 rounded-sm border flex items-center justify-center transition-all ${
-                              isSelected ? "border-gold bg-gold" : "border-white/20"
+                              isSelected
+                                ? "border-gold bg-gold"
+                                : "border-black/20 dark:border-white/20"
                             }`}
                           >
                             {isSelected && (
@@ -421,37 +424,37 @@ export default function Contact() {
                   exit={{ opacity: 0, x: -20 }}
                   className="space-y-6 text-left"
                 >
-                  <h3 className="text-xl md:text-2xl font-serif text-white mb-6 font-light">
+                  <h3 className="text-xl md:text-2xl font-serif text-black dark:text-white transition-colors duration-300 mb-6 font-light">
                     Review your booking
                   </h3>
                   
                   {/* Summary Box */}
-                  <div className="p-5 bg-black/30 border border-white/5 rounded-sm text-xs space-y-3 font-light mb-8">
+                  <div className=" p-5 bg-gray-50 dark:bg-black/30 border border-black/5 dark:border-white/5 rounded-sm text-xs space-y-3 font-light mb-8 transition-colors duration-300 " >
                     <h4 className="text-gold uppercase tracking-widest font-semibold mb-2">
                       Event Summary
                     </h4>
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <span className="text-gray-400 block uppercase tracking-wider text-[10px]">Occasion</span>
-                        <span className="text-white font-medium uppercase">
+                        <span className="text-gray-600 dark:text-gray-400 block uppercase tracking-wider text-[10px]">Occasion</span>
+                        <span className="text-black dark:text-white transition-colors duration-300 font-medium uppercase">
                           {occasions.find((o) => o.val === formData.occasion)?.label || "Not Selected"}
                         </span>
                       </div>
                       <div>
-                        <span className="text-gray-400 block uppercase tracking-wider text-[10px]">Date</span>
-                        <span className="text-white font-medium">{formData.date || "Not Set"}</span>
+                        <span className="text-gray-600 dark:text-gray-400 block uppercase tracking-wider text-[10px]">Date</span>
+                        <span className="text-black dark:text-white transition-colors duration-300 font-medium">{formData.date || "Not Set"}</span>
                       </div>
                       <div>
-                        <span className="text-gray-400 block uppercase tracking-wider text-[10px]">Venue</span>
-                        <span className="text-white font-medium">{formData.location || "Not Set"}</span>
+                        <span className="text-gray-600 dark:text-gray-400 block uppercase tracking-wider text-[10px]">Venue</span>
+                        <span className="text-black dark:text-white transition-colors duration-300 font-medium">{formData.location || "Not Set"}</span>
                       </div>
                       <div>
-                        <span className="text-gray-400 block uppercase tracking-wider text-[10px]">Guest Count</span>
-                        <span className="text-white font-medium">{formData.guests}</span>
+                        <span className="text-gray-600 dark:text-gray-400 block uppercase tracking-wider text-[10px]">Guest Count</span>
+                        <span className="text-black dark:text-white transition-colors duration-300 font-medium">{formData.guests}</span>
                       </div>
                     </div>
                     <div>
-                      <span className="text-gray-400 block uppercase tracking-wider text-[10px] mb-1">Services & Deliverables</span>
+                      <span className="text-gray-600 dark:text-gray-400 block uppercase tracking-wider text-[10px] mb-1">Services & Deliverables</span>
                       <div className="flex flex-wrap gap-1.5 mt-1">
                         {formData.options.map((o) => (
                           <span key={o} className="bg-gold/10 text-gold px-2 py-0.5 rounded-sm border border-gold/20 text-[9px] uppercase tracking-wider font-semibold">
@@ -459,7 +462,7 @@ export default function Contact() {
                           </span>
                         ))}
                         {formData.deliverables.map((d) => (
-                          <span key={d} className="bg-white/5 text-white px-2 py-0.5 rounded-sm border border-white/10 text-[9px] uppercase tracking-wider">
+                          <span key={d} className=" bg-gray-100 dark:bg-white/5 text-black dark:text-white px-2 py-0.5 rounded-sm border border-black/10 dark:border-white/10 text-[9px] uppercase tracking-wider transition-colors duration-300 ">
                             {d}
                           </span>
                         ))}
@@ -473,7 +476,7 @@ export default function Contact() {
                   {/* Personal Fields */}
                   <div className="space-y-4">
                     <div>
-                      <label className="block text-gray-400 text-xs uppercase tracking-widest mb-2 font-medium">
+                      <label className="block text-gray-600 dark:text-gray-400 text-xs uppercase tracking-widest mb-2 font-medium">
                         Your Full Name
                       </label>
                       <input
@@ -482,14 +485,14 @@ export default function Contact() {
                         value={formData.name}
                         onChange={handleTextChange}
                         placeholder="e.g. Aarav Sharma"
-                        className="w-full p-4 bg-black/40 border border-white/5 focus:border-gold outline-none text-white rounded-sm text-sm"
+                        className=" w-full p-4 bg-white dark:bg-black/40 border border-black/10 dark:border-white/5 focus:border-gold outline-none text-black dark:text-white transition-colors duration-300 rounded-sm text-sm "
                       />
                       {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-gray-400 text-xs uppercase tracking-widest mb-2 font-medium">
+                        <label className="block text-gray-600 dark:text-gray-400 text-xs uppercase tracking-widest mb-2 font-medium">
                           Email Address
                         </label>
                         <input
@@ -498,13 +501,13 @@ export default function Contact() {
                           value={formData.email}
                           onChange={handleTextChange}
                           placeholder="e.g. aarav@gmail.com"
-                          className="w-full p-4 bg-black/40 border border-white/5 focus:border-gold outline-none text-white rounded-sm text-sm"
+                          className=" w-full p-4 bg-white dark:bg-black/40 border border-black/10 dark:border-white/5 focus:border-gold outline-none text-black dark:text-white transition-colors duration-300 rounded-sm text-sm "
                         />
                         {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
                       </div>
 
                       <div>
-                        <label className="block text-gray-400 text-xs uppercase tracking-widest mb-2 font-medium">
+                        <label className="block text-gray-600 dark:text-gray-400 text-xs uppercase tracking-widest mb-2 font-medium">
                           WhatsApp Phone Number
                         </label>
                         <input
@@ -513,14 +516,14 @@ export default function Contact() {
                           value={formData.phone}
                           onChange={handleTextChange}
                           placeholder="e.g. +91 98765 43210"
-                          className="w-full p-4 bg-black/40 border border-white/5 focus:border-gold outline-none text-white rounded-sm text-sm"
+                          className=" w-full p-4 bg-white dark:bg-black/40 border border-black/10 dark:border-white/5 focus:border-gold outline-none text-black dark:text-white transition-colors duration-300 rounded-sm text-sm "
                         />
                         {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
                       </div>
                     </div>
 
                     <div>
-                      <label className="block text-gray-400 text-xs uppercase tracking-widest mb-2 font-medium">
+                      <label className="block text-gray-600 dark:text-gray-400 text-xs uppercase tracking-widest mb-2 font-medium">
                         Additional Notes / Vision details
                       </label>
                       <textarea
@@ -529,7 +532,7 @@ export default function Contact() {
                         onChange={handleTextChange}
                         rows={3}
                         placeholder="Tell us a little more about your creative expectations or event details..."
-                        className="w-full p-4 bg-black/40 border border-white/5 focus:border-gold outline-none text-white rounded-sm text-sm resize-none"
+                        className=" w-full p-4 bg-white dark:bg-black/40 border border-black/10 dark:border-white/5 focus:border-gold outline-none text-black dark:text-white transition-colors duration-300 rounded-sm text-sm "
                       />
                     </div>
                   </div>
@@ -549,10 +552,10 @@ export default function Contact() {
                   </div>
                   
                   <div className="space-y-2">
-                    <h3 className="text-2xl md:text-3xl font-serif text-white font-light">
+                    <h3 className="text-2xl md:text-3xl font-serif text-black dark:text-white transition-colors duration-300 font-light">
                       Thank You!
                     </h3>
-                    <p className="text-gray-400 text-xs md:text-sm font-light max-w-md mx-auto leading-relaxed">
+                    <p className="text-gray-600 dark:text-gray-400 text-xs md:text-sm font-light max-w-md mx-auto leading-relaxed">
                       Your booking inquiry details have been saved. Our creative coordinator will review your dates and get back to you within 48 hours.
                     </p>
                   </div>
@@ -587,7 +590,7 @@ export default function Contact() {
                         });
                         setStep(1);
                       }}
-                      className="px-8 py-3.5 border border-white/10 hover:border-gold hover:text-gold text-white uppercase tracking-wider text-xs rounded-full transition-all duration-300 cursor-pointer"
+                      className="px-8 py-3.5 border border-white/10 hover:border-gold hover:text-gold text-black dark:text-white transition-colors duration-300 uppercase tracking-wider text-xs rounded-full transition-all duration-300 cursor-pointer"
                     >
                       Start New Inquiry
                     </button>
@@ -599,11 +602,11 @@ export default function Contact() {
 
             {/* Bottom Navigation Buttons */}
             {step < 6 && (
-              <div className="flex justify-between items-center mt-12 border-t border-white/5 pt-8">
+              <div className="flex justify-between items-center mt-12 border-t border-black/5 dark:border-white/5 pt-8">
                 <button
                   type="button"
                   onClick={prevStep}
-                  className={`flex items-center gap-2 text-xs uppercase tracking-widest text-gray-400 hover:text-white transition-all cursor-pointer ${
+                  className={`flex items-center gap-2 text-xs uppercase tracking-widest text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-all cursor-pointer ${
                     step === 1 ? "opacity-0 pointer-events-none" : ""
                   }`}
                 >

@@ -6,7 +6,18 @@ export default function Layout({
   children,
 }: LayoutProps) {
   return (
-    <div className="bg-black text-white min-h-screen overflow-x-hidden">
+    <div
+      className="
+        min-h-screen
+        overflow-x-hidden
+        bg-white
+        text-black
+        dark:bg-black
+        dark:text-white
+        transition-colors
+        duration-300
+      "
+    >
       {children}
     </div>
   );

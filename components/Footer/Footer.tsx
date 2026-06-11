@@ -15,7 +15,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-[#050505] text-gray-400 py-16 border-t border-white/5 relative overflow-hidden">
+    <footer className=" bg-white dark:bg-[#050505] text-gray-600 dark:text-gray-400 py-16 border-t border-black/5 dark:border-white/5 relative overflow-hidden transition-colors duration-300">
       {/* Subtle gold line accent */}
       <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
 
@@ -28,14 +28,14 @@ export default function Footer() {
               onClick={() => scrollToSection("hero")}
               className="cursor-pointer group inline-block"
             >
-              <h3 className="text-white text-lg md:text-xl font-serif font-semibold tracking-[0.2em] group-hover:text-gold transition-colors duration-300">
+              <h3 className=" text-black dark:text-white text-lg md:text-xl font-serif font-semibold tracking-[0.2em] group-hover:text-gold transition-colors duration-300">
                 ASKI FILMS
               </h3>
-              <p className="text-[7px] uppercase tracking-[0.45em] text-gray-500 group-hover:text-white transition-colors duration-300 -mt-1 pl-0.5">
+              <p className=" text-[7px] uppercase tracking-[0.45em] text-gray-500 dark:text-gray-500 group-hover:text-black dark:group-hover:text-white transition-colors duration-300 -mt-1 pl-0.5">
                 Photography division
               </p>
             </div>
-            <p className="text-xs md:text-sm font-light max-w-sm leading-relaxed text-gray-500">
+            <p className=" text-xs md:text-sm font-light max-w-sm leading-relaxed text-gray-600 dark:text-gray-500 transition-colors duration-300">
               A dedicated, film-crew grade photography team under the Aski Films production house umbrella. Bringing cinematic composition, lighting precision, and raw emotional storytelling to your special days.
             </p>
             
@@ -45,7 +45,7 @@ export default function Footer() {
                 href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-8 h-8 rounded-full bg-white/5 hover:bg-gold hover:text-black flex items-center justify-center text-white transition-all duration-300 border border-white/5"
+                className=" w-8 h-8 rounded-full bg-black/5 dark:bg-white/5 hover:bg-gold hover:text-black flex items-center justify-center text-black dark:text-white transition-all duration-300 border border-black/5 dark:border-white/5"
               >
                 <FaInstagram size={15} />
               </a>
@@ -53,7 +53,7 @@ export default function Footer() {
                 href="https://youtube.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-8 h-8 rounded-full bg-white/5 hover:bg-gold hover:text-black flex items-center justify-center text-white transition-all duration-300 border border-white/5"
+                className=" w-8 h-8 rounded-full bg-black/5 dark:bg-white/5 hover:bg-gold hover:text-black flex items-center justify-center text-black dark:text-white transition-all duration-300 border border-black/5 dark:border-white/5"
               >
                 <FaYoutube size={15} />
               </a>
@@ -61,7 +61,7 @@ export default function Footer() {
                 href="https://wa.me/919945969622"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-8 h-8 rounded-full bg-white/5 hover:bg-gold hover:text-black flex items-center justify-center text-white transition-all duration-300 border border-white/5"
+                className=" w-8 h-8 rounded-full bg-black/5 dark:bg-white/5 hover:bg-gold hover:text-black flex items-center justify-center text-black dark:text-white transition-all duration-300 border border-black/5 dark:border-white/5"
               >
                 <FaWhatsapp size={15} />
               </a>
@@ -70,7 +70,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div className="space-y-4 text-left">
-            <h4 className="text-white text-xs uppercase tracking-[0.2em] font-semibold">
+            <h4 className=" text-black dark:text-white text-xs uppercase tracking-[0.2em] font-semibold transition-colors duration-300">
               Explore
             </h4>
             <ul className="space-y-2 text-xs md:text-sm font-light">
@@ -96,25 +96,36 @@ export default function Footer() {
 
           {/* Contacts & Locations */}
           <div className="space-y-4 text-left">
-            <h4 className="text-white text-xs uppercase tracking-[0.2em] font-semibold">
+            <h4 className="
+  text-black
+  dark:text-white
+  text-xs
+  uppercase
+  tracking-[0.2em]
+  font-semibold
+  transition-colors
+  duration-300
+">
               Presence
             </h4>
             <div className="space-y-3 text-xs md:text-sm font-light">
               <div>
                 <span className="text-gray-500 block uppercase tracking-wider text-[9px] mb-0.5">Headquarters</span>
-                <p className="text-gray-300">Bengaluru, Karnataka, India</p>
+                <p className="text-gray-700 dark:text-gray-300 transition-colors duration-300">
+                  Bengaluru, Karnataka, India
+                </p>
               </div>
               <div>
                 <span className="text-gray-500 block uppercase tracking-wider text-[9px] mb-0.5">Inquiries</span>
                 <a
                   href="mailto:hello@askifilms.com"
-                  className="text-gray-300 hover:text-gold transition-colors block"
+                  className=" text-gray-700 dark:text-gray-300 hover:text-gold transition-colors duration-300 block"
                 >
                   hello@askifilms.com
                 </a>
                 <a
                   href="tel:+919945969622"
-                  className="text-gray-300 hover:text-gold transition-colors block mt-0.5"
+                  className=" text-gray-700 dark:text-gray-300 hover:text-gold transition-colors duration-300 block mt-0.5"
                 >
                   +91 99459 69622
                 </a>
@@ -128,7 +139,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom copyright */}
-        <div className="border-t border-white/5 mt-16 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-light text-gray-600">
+        <div className=" border-t border-black/5 dark:border-white/5 mt-16 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-light text-gray-600 dark:text-gray-500 transition-colors duration-300">
           <p>© {new Date().getFullYear()} Aski Films. All rights reserved.</p>
           <p className="flex items-center gap-1">
             Made with <span className="text-gold">♥</span> by the Aski Production Team
