@@ -1,6 +1,6 @@
 "use client";
 
-import { FaInstagram, FaYoutube, FaWhatsapp } from "react-icons/fa";
+import { FaInstagram, FaWhatsapp } from "react-icons/fa";
 
 export default function Footer() {
   const scrollToSection = (id: string) => {
@@ -49,14 +49,7 @@ export default function Footer() {
               >
                 <FaInstagram size={15} />
               </a>
-              <a
-                href="https://youtube.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className=" w-8 h-8 rounded-full bg-black/5 dark:bg-white/5 hover:bg-gold hover:text-black flex items-center justify-center text-black dark:text-white transition-all duration-300 border border-black/5 dark:border-white/5"
-              >
-                <FaYoutube size={15} />
-              </a>
+        
               <a
                 href="https://wa.me/919945969622"
                 target="_blank"
