@@ -4,100 +4,44 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { HiOutlineArrowLeft, HiOutlineArrowRight, HiOutlineX } from "react-icons/hi";
+import { supabase } from "@/lib/supabase";
 
 const categories = ["All", "Weddings", "Pre-Wedding", "Naming Ceremony", "Maternity", "Portraits"];
+type PortfolioItem = {
+  id: string;
+  title: string;
+  category: string;
+  image_url: string;
+};
 
-const portfolioItems = [
-  {
-    id: 1,
-    category: "Weddings",
-    title: "The Royal Union",
-    location: "Bengaluru Palace",
-    image: "https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=800",
-  },
-  {
-    id: 2,
-    category: "Pre-Wedding",
-    title: "Golden Hour Romance",
-    location: "Nandi Hills, Karnataka",
-    image: "https://images.unsplash.com/photo-1519225495810-7517c300ea84?q=80&w=800",
-  },
-  {
-    id: 3,
-    category: "Naming Ceremony",
-    title: "Welcoming Aavya",
-    location: "Traditional Home, Jayanagar",
-    image: "https://images.unsplash.com/photo-1544126592-807adc2b5283?q=80&w=800",
-  },
-  {
-    id: 4,
-    category: "Maternity",
-    title: "New Beginnings",
-    location: "Cubbon Park, Bengaluru",
-    image: "https://images.unsplash.com/photo-1518156677180-95a2893f3e9f?q=80&w=800",
-  },
-  {
-    id: 5,
-    category: "Portraits",
-    title: "Editorial Edge",
-    location: "Indoor Studio, Indiranagar",
-    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800",
-  },
-  {
-    id: 6,
-    category: "Weddings",
-    title: "Candid Laughter",
-    location: "Heritage Resort, Mysore",
-    image: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800",
-  },
-  {
-    id: 7,
-    category: "Pre-Wedding",
-    title: "Lake-Side Echoes",
-    location: "Kanakapura Lakes",
-    image: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=800",
-  },
-  {
-    id: 8,
-    category: "Naming Ceremony",
-    title: "Tender Footsteps",
-    location: "Temple Pavilion",
-    image: "https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=800",
-  },
-  {
-    id: 9,
-    category: "Maternity",
-    title: "Sacred Silhouette",
-    location: "Outskirts Studio",
-    image: "https://images.unsplash.com/photo-1551250939-2c4937e90947?q=80&w=800",
-  },
-  {
-    id: 10,
-    category: "Portraits",
-    title: "Cinematic Moods",
-    location: "Indiranagar Alleyways",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800",
-  },
-  {
-    id: 11,
-    category: "Weddings",
-    title: "Sacred Vows",
-    location: "Leela Palace, Bengaluru",
-    image: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=800",
-  },
-  {
-    id: 12,
-    category: "Maternity",
-    title: "Whispering Woods",
-    location: "Redwood Farms",
-    image: "https://images.unsplash.com/photo-1558244661-d248897f7bc4?q=80&w=800",
-  },
-];
 
 export default function Portfolio() {
   const [activeTab, setActiveTab] = useState("All");
-  const [filteredItems, setFilteredItems] = useState(portfolioItems);
+  const [portfolioItems, setPortfolioItems] =
+    useState<PortfolioItem[]>([]);
+
+  const [filteredItems, setFilteredItems] =
+    useState<PortfolioItem[]>([]);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  
+  const fetchPortfolio = async () => {
+    const { data, error } = await supabase
+      .from("portfolio_images")
+      .select("*")
+      .order("created_at", { ascending: false });
+
+    if (error) {
+      console.error(error);
+      return;
+    }
+
+    setPortfolioItems(data || []);
+    setFilteredItems(data || []);
+  };
+
+  useEffect(() => {
+    fetchPortfolio();
+  }, [])
 
   useEffect(() => {
     if (activeTab === "All") {
@@ -105,9 +49,9 @@ export default function Portfolio() {
     } else {
       setFilteredItems(portfolioItems.filter((item) => item.category === activeTab));
     }
-  }, [activeTab]);
+  }, [activeTab, portfolioItems]);
 
-  const openLightbox = (id: number) => {
+  const openLightbox = (id: string) => {
     // Find index of the item inside filteredItems array
     const idx = filteredItems.findIndex((item) => item.id === id);
     if (idx !== -1) {
@@ -199,7 +143,7 @@ export default function Portfolio() {
               >
                 {/* Photo */}
                 <Image
-                  src={item.image}
+                  src={item.image_url}
                   alt={item.title}
                   fill
                   sizes="(max-w-7xl) 33vw, 100vw"
@@ -242,7 +186,7 @@ export default function Portfolio() {
                       />
                     </svg>
                     <span className="text-[10px] uppercase tracking-widest">
-                      {item.location}
+                      Aski Films
                     </span>
                   </div>
                 </div>
@@ -307,7 +251,7 @@ export default function Portfolio() {
                 className="relative w-full h-full"
               >
                 <Image
-                  src={filteredItems[lightboxIndex].image}
+                  src={filteredItems[lightboxIndex].image_url}
                   alt={filteredItems[lightboxIndex].title}
                   fill
                   sizes="(max-w-4xl) 100vw, 80vw"
@@ -320,7 +264,7 @@ export default function Portfolio() {
             {/* Bottom Info Bar */}
             <div className="absolute bottom-6 left-6 right-6 text-center text-gray-400 text-xs">
               <span className="tracking-widest uppercase">
-                {lightboxIndex + 1} / {filteredItems.length} • {filteredItems[lightboxIndex].location}
+                {lightboxIndex + 1} / {filteredItems.length} • Aski Films
               </span>
             </div>
 
