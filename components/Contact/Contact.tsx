@@ -17,6 +17,12 @@ export default function Contact() {
     date: "",
   });
 
+  const [errors, setErrors] = useState({
+    name: "",
+    occasion: "",
+    date: "",
+  });
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
@@ -31,6 +37,34 @@ export default function Contact() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
+    const newErrors = {
+      name: "",
+      occasion: "",
+      date: "",
+    };
+
+    if (!formData.name.trim()) {
+      newErrors.name = "Please enter your name";
+    }
+
+    if (!formData.occasion) {
+      newErrors.occasion = "Please select an event type";
+    }
+
+    if (!formData.date) {
+      newErrors.date = "Please select an event date";
+    }
+
+    setErrors(newErrors);
+
+    if (
+      newErrors.name ||
+      newErrors.occasion ||
+      newErrors.date
+    ) {
+      return;
+    }
+
     const occasionLabel =
       occasions.find(
         (item) => item.val === formData.occasion
@@ -38,17 +72,15 @@ export default function Contact() {
 
     const message = `Hi Aski Films,
 
-I'd like to enquire about a photoshoot.
+  I'd like to enquire about a photoshoot.
 
-Name: ${formData.name}
-Event Type: ${occasionLabel}
-Preferred Date: ${formData.date}
-`;
+  Name: ${formData.name}
+  Event Type: ${occasionLabel}
+  Preferred Date: ${formData.date}
+  `;
 
     window.open(
-      `https://wa.me/919945969622?text=${encodeURIComponent(
-        message
-      )}`,
+      `https://wa.me/919945969622?text=${encodeURIComponent(message)}`,
       "_blank"
     );
   };
@@ -116,6 +148,12 @@ Preferred Date: ${formData.date}
                 Your Name
               </label>
 
+              {errors.name && (
+                <p className="text-red-500 text-xs mb-2">
+                  {errors.name}
+                </p>
+              )}
+
               <input
                 type="text"
                 name="name"
@@ -140,7 +178,12 @@ Preferred Date: ${formData.date}
               <label className="block text-[10px] uppercase tracking-[0.25em] text-black/40 dark:text-white/40 mb-3">
                 Event Type
               </label>
-
+              
+              {errors.occasion && (
+                <p className="text-red-500 text-xs mb-2">
+                  {errors.occasion}
+                </p>
+              )}
               <select
                 name="occasion"
                 value={formData.occasion}
@@ -181,21 +224,26 @@ Preferred Date: ${formData.date}
                 Event Date
               </label>
 
+              {errors.date && (
+                <p className="text-red-500 text-xs mb-2">
+                  {errors.date}
+                </p>
+              )}
               <input
                 type="date"
                 name="date"
                 value={formData.date}
                 onChange={handleChange}
-                className="
-                w-full
-                bg-transparent
-                border-b
-                border-black/15 dark:border-white/20
-                pb-3
-                text-black dark:text-white
-                outline-none
-                focus:border-[#c8a36b]
-                "
+                className={`
+                  w-full
+                  bg-transparent
+                  border-b
+                  pb-3
+                  text-black dark:text-white
+                  outline-none
+                  focus:border-[#c8a36b]
+                  ${errors.name ? "border-red-500" : "border-black/15 dark:border-white/20"}
+                `}
               />
             </div>
 
