@@ -150,20 +150,20 @@ export default function AdminPage() {
         Portfolio Admin
       </h1>
 
-      <div className="space-y-6">
+      <div className=" space-y-6 bg-white dark:bg-[#090909] border border-black/10 dark:border-white/10 rounded-3xl p-8">
 
         <input
           type="text"
           placeholder="Image Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          className="w-full border p-3 rounded"
+          className=" w-full bg-white dark:bg-[#0b0b0b] border border-black/10 dark:border-white/10 rounded-xl px-5 py-4 text-black dark:text-white placeholder:text-zinc-900 dark:placeholder:text-zinc-100 outline-none focus:border-[#c8a36b]"
         />
 
         <select
           value={category}
           onChange={(e) => setCategory(e.target.value)}
-          className="w-full border border-zinc-700 bg-black text-white p-3 rounded"
+          className=" w-full bg-white dark:bg-[#0b0b0b] border border-black/10 dark:border-white/10 rounded-xl px-5 py-4 text-black dark:text-white outline-none focus:border-[#c8a36b]"
         >
           <option>Weddings</option>
           <option>Pre-Wedding</option>
@@ -172,18 +172,57 @@ export default function AdminPage() {
           <option>Portraits</option>
         </select>
 
-        <input
-          type="file"
-          accept="image/*"
-          onChange={(e) =>
-            setFile(e.target.files?.[0] || null)
-          }
-        />
+        <div>
+          <label className="block mb-2 text-sm font-medium text-black dark:text-white">
+            Portfolio Image
+          </label>
+
+          <label
+            htmlFor="file-upload"
+            className=" flex items-center justify-center w-full h-32 border-2 border-dashed bg-white dark:bg-[#0b0b0b] border-zinc-300 dark:border-[#262626] rounded-xl cursor-pointer hover:border-[#c8a36b] hover:bg-zinc-50 dark:hover:bg-[#111111] transition-all duration-300"
+          >
+            <div className="text-center">
+              <div className="text-4xl mb-3">📸</div>
+
+              <p className="font-semibold text-black dark:text-white">
+                {file ? file.name : "Choose Portfolio Image"}
+              </p>
+
+              <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-2">
+                Click here to browse files
+              </p>
+            </div>
+          </label>
+
+          <input
+            id="file-upload"
+            type="file"
+            accept="image/*"
+            className="hidden"
+            onChange={(e) =>
+              setFile(e.target.files?.[0] || null)
+            }
+          />
+        </div>
 
         <button
           onClick={uploadImage}
           disabled={loading}
-          className="bg-black text-white px-6 py-3 rounded"
+          className="
+            w-full
+            bg-[#c8a36b]
+            hover:bg-[#d8b27b]
+            disabled:opacity-50
+            disabled:cursor-not-allowed
+            text-black
+            font-semibold
+            py-4
+            rounded-xl
+            transition-all
+            duration-300
+            shadow-lg
+            hover:shadow-xl
+          "
         >
           {loading ? "Uploading..." : "Upload Image"}
         </button>
@@ -198,7 +237,7 @@ export default function AdminPage() {
           {images.map((img) => (
             <div
               key={img.id}
-              className="border rounded-lg overflow-hidden"
+              className=" bg-white dark:bg-[#0b0b0b] border border-black/10 dark:border-white/10 rounded-2xl overflow-hidden transition-all duration-300 hover:border-[#c8a36b]"
             >
               <img
                 src={img.image_url}
@@ -207,11 +246,11 @@ export default function AdminPage() {
               />
 
               <div className="p-4">
-                <h3 className="font-semibold">
+                <h3 className="font-bold text-black dark:text-white">
                   {img.title}
                 </h3>
 
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-white-500">
                   {img.category}
                 </p>
 
@@ -222,7 +261,7 @@ export default function AdminPage() {
                       img.image_url
                     )
                   }
-                  className="mt-3 bg-red-600 text-white px-4 py-2 rounded"
+                  className=" mt-4 w-full bg-red-600 hover:bg-red-700 text-white py-2 rounded-lg transition-colors"
                 >
                   Delete
                 </button>
