@@ -176,7 +176,7 @@ Preferred Date: ${formData.date}
             </div>
 
             {/* Date */}
-            <div className="px-6">
+            <div className="lg:px-6">
               <label className="block text-[10px] uppercase tracking-[0.25em] text-black/40 dark:text-white/40 mb-3">
                 Event Date
               </label>
