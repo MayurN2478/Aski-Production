@@ -5,15 +5,15 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { HiOutlineArrowLeft, HiOutlineArrowRight, HiOutlineX } from "react-icons/hi";
 import { supabase } from "@/lib/supabase";
+import VideoGallery from "@/components/Portfolio/VideoGallery";
 
-const categories = ["All", "Weddings", "Pre-Wedding", "Naming Ceremony", "Maternity", "Portraits"];
+const categories = ["All", "Weddings", "Pre-Wedding", "Naming Ceremony", "Maternity", "Portraits", "Videos"];
 type PortfolioItem = {
   id: string;
   title: string;
   category: string;
   image_url: string;
 };
-
 
 export default function Portfolio() {
   const [activeTab, setActiveTab] = useState("All");
@@ -46,8 +46,12 @@ export default function Portfolio() {
   useEffect(() => {
     if (activeTab === "All") {
       setFilteredItems(portfolioItems);
-    } else {
-      setFilteredItems(portfolioItems.filter((item) => item.category === activeTab));
+    } else if (activeTab !== "Videos") {
+      setFilteredItems(
+        portfolioItems.filter(
+          (item) => item.category === activeTab
+        )
+      );
     }
   }, [activeTab, portfolioItems]);
 
@@ -124,77 +128,103 @@ export default function Portfolio() {
           </div>
         </div>
 
-        {/* Gallery Grid */}
-        <motion.div
-          layout
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
-          <AnimatePresence mode="popLayout">
-            {filteredItems.map((item) => (
+        {activeTab ==="Videos" ? (
+          <VideoGallery/>
+        ) : (
+             
+            <>
+            {/*Existing */}
+            {/* Gallery Grid */}
+            {filteredItems.length === 0 ? (
+
+              <div className="flex flex-col items-center justify-center py-24 text-center">
+
+                <h3 className="text-3xl font-serif text-black dark:text-white mb-4">
+                  New Memories Are On Their Way
+                </h3>
+
+                <p className="max-w-xl text-gray-600 dark:text-gray-400 leading-8">
+                  Our team is currently curating and uploading our latest work.
+                  Please check back soon to discover more beautiful stories captured by Aski Films.
+                </p>
+
+              </div>
+
+            ) : (
+
               <motion.div
                 layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.5 }}
-                key={item.id}
-                onClick={() => openLightbox(item.id)}
-                className=" group relative aspect-[3/4] overflow-hidden rounded-sm cursor-pointer shadow-md hover:shadow-xl border border-black/5 dark:border-white/5 transition-all duration-300 "
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
               >
-                {/* Photo */}
-                <Image
-                  src={item.image_url}
-                  alt={item.title}
-                  fill
-                  sizes="(max-w-7xl) 33vw, 100vw"
-                  className="object-cover scale-[1.02] group-hover:scale-110 transition-transform duration-700 ease-out grayscale-[15%] group-hover:grayscale-0"
-                />
 
-                {/* Overlays */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
+              <AnimatePresence mode="popLayout">
+                {filteredItems.map((item) => (
+                  <motion.div
+                    layout
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.9 }}
+                    transition={{ duration: 0.5 }}
+                    key={item.id}
+                    onClick={() => openLightbox(item.id)}
+                    className=" group relative aspect-[3/4] overflow-hidden rounded-sm cursor-pointer shadow-md hover:shadow-xl border border-black/5 dark:border-white/5 transition-all duration-300 "
+                  >
+                    {/* Photo */}
+                    <Image
+                      src={item.image_url}
+                      alt={item.title}
+                      fill
+                      sizes="(max-w-7xl) 33vw, 100vw"
+                      className="object-cover scale-[1.02] group-hover:scale-110 transition-transform duration-700 ease-out grayscale-[15%] group-hover:grayscale-0"
+                    />
 
-                {/* Corner Accents on Hover */}
-                <div className="absolute top-4 left-4 w-6 h-6 border-t border-l border-gold/60 opacity-0 group-hover:opacity-100 transition-all duration-500 transform -translate-x-2 -translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0 z-20" />
-                <div className="absolute bottom-4 right-4 w-6 h-6 border-b border-r border-gold/60 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0 z-20" />
+                    {/* Overlays */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
 
-                {/* Details (Toggled on Hover) */}
-                <div className="absolute bottom-6 left-6 right-6 z-20 transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500 ease-out text-left">
-                  <span className="text-gold text-[9px] uppercase tracking-[0.25em] font-semibold block mb-1">
-                    {item.category}
-                  </span>
-                  <h3 className="text-xl font-serif text-white font-light tracking-wide leading-tight">
-                    {item.title}
-                  </h3>
-                  <div className=" flex items-center gap-1.5 mt-2 text-gray-300 ">
-                    <svg
-                      className="w-3.5 h-3.5 text-gold"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                      />
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                      />
-                    </svg>
-                    <span className="text-[10px] uppercase tracking-widest">
-                      Aski Films
-                    </span>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </motion.div>
+                    {/* Corner Accents on Hover */}
+                    <div className="absolute top-4 left-4 w-6 h-6 border-t border-l border-gold/60 opacity-0 group-hover:opacity-100 transition-all duration-500 transform -translate-x-2 -translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0 z-20" />
+                    <div className="absolute bottom-4 right-4 w-6 h-6 border-b border-r border-gold/60 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0 z-20" />
 
+                    {/* Details (Toggled on Hover) */}
+                    <div className="absolute bottom-6 left-6 right-6 z-20 transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500 ease-out text-left">
+                      <span className="text-gold text-[9px] uppercase tracking-[0.25em] font-semibold block mb-1">
+                        {item.category}
+                      </span>
+                      <h3 className="text-xl font-serif text-white font-light tracking-wide leading-tight">
+                        {item.title}
+                      </h3>
+                      <div className=" flex items-center gap-1.5 mt-2 text-gray-300 ">
+                        <svg
+                          className="w-3.5 h-3.5 text-gold"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                          />
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                          />
+                        </svg>
+                        <span className="text-[10px] uppercase tracking-widest">
+                          Aski Films
+                        </span>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </AnimatePresence>
+            </motion.div>
+            )}
+          </>
+        )}
       </div>
 
       {/* LIGHTBOX MODAL */}
